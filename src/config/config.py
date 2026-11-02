@@ -14,8 +14,6 @@ directories = Directories()
 
 
 class Urls(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env")
-
     epg: str = "https://epgshare01.online/epgshare01/epg_ripper_ES1.xml.gz"
 
 

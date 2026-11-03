@@ -3,8 +3,6 @@ from pathlib import Path
 
 from config import directories
 
-from .channels import CHANNELS
-
 
 def norm(text: str) -> str:
     replacements = {
@@ -27,9 +25,7 @@ def norm(text: str) -> str:
 
 class Fragments:
     def __init__(self, channel: str, show: str) -> None:
-        self.path: Path = (directories.output / norm(channel) / norm(show) / datetime.now().strftime(r"%Y-%m-%d")).with_suffix(
-            CHANNELS[channel]["suffix"]
-        )
+        self.path: Path = directories.output / norm(channel) / norm(show) / f"{datetime.now().strftime(r'%Y-%m-%d')}.ts"
         self.num: int = 0
 
     def append(self, content: bytes) -> None:

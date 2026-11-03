@@ -3,7 +3,7 @@ from datetime import datetime
 from xml.etree.ElementTree import Element
 
 
-def normalize(text: str, save: list[tuple[str, str]] = []) -> str:
+def normalize(text: str) -> str:
     text = unicodedata.normalize("NFC", "".join(text.lower().split()).strip())
     text = text.replace("ñ", "\0")
     text = unicodedata.normalize("NFD", text)

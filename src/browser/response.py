@@ -20,16 +20,16 @@ class ResponseHandler:
         return all(conditions)
 
     @staticmethod
-    def is_valid(resp: Response) -> bool:
+    def is_valid(resp: Response) -> bytes | None:
         try:
-            resp.body()
+            content = resp.body()
         except Exception as e:
             print("Couldn't be read: ", resp.url, e)
-            return False
-        return True
+            return None
+        return content
 
     def on_response(self, resp: Response) -> None:
         if self.is_filtered(resp):
-            if self.is_valid(resp):
-                self.fragments.append(resp.body())
+            if content := self.is_valid(resp):
+                self.fragments.append(content)
                 print(f"Fragment {len(self.fragments)} saved, {humanize.naturalsize(self.fragments.size())}        ", end="\r")

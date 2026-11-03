@@ -1,6 +1,6 @@
 from typing import Callable
 
-from playwright.sync_api import Locator, Page
+from playwright.sync_api import Page
 
 from .channels import CHANNELS
 

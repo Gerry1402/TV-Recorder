@@ -10,7 +10,7 @@ class Starter:
     adds = 90  # seconds
 
     def __init__(self, channel: str) -> None:
-        self.selectors: dict[str, str] = CHANNELS[channel]["selectors"]
+        self.selectors: dict[str, str] = CHANNELS[channel]["selectors"].copy()
         self.css_player: str = self.selectors.pop("player")
         self.coordinates: tuple[tuple[float, float], tuple[float, float]] | None = None
 
@@ -29,7 +29,7 @@ class Starter:
 
         def start_stream(filter: Callable) -> None:
             with page.expect_response(lambda r: filter(r), timeout=self.adds * 1000) as _:
-                page.locator(self.selectors.pop("start")).click()
+                page.locator(self.selectors["start"]).click()
             self.coordinates = obtain_coordinates()
 
         def click(selector: str) -> None:

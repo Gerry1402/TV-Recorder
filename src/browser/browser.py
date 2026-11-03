@@ -11,7 +11,7 @@ class Stream:
     _launch_kwargs = {
         "headless": False,
         "args": [
-            "--window-position=-32000,-32000",
+            # "--window-position=-32000,-32000",
             "--window-size=1280,720",
             "--mute-audio",
         ],

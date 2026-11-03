@@ -6,7 +6,8 @@ CHANNELS: dict = {
         "selectors": {
             "player": ".videoPlayer",
             # "message": ".message",
-            "start": "[data-agth='playerPreplayer']",
+            "start": ".videoPlayer",
+            # "start": "[data-agth='playerPreplayer']",
             "fullscreen": "[data-agth='playerFullScreenOnButton']",
         },
     },

@@ -12,8 +12,8 @@ logger = logging.getLogger(__name__)
 def main():
     logger.info("Starting TV Recorder")
     epg = EPG()
-    # if programme := epg["Cuatro"].now():
-    if programme := epg["Cuatro"]["Horizonte diarios"].actual():
+    if programme := epg["Cuatro"].now():
+    # if programme := epg["Cuatro"]["Horizonte diarios"].actual():
         print(programme)
         player = Player(programme.channel, programme.title)
         player.record(programme.start, programme.end)

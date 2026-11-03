@@ -5,8 +5,8 @@ CHANNELS: dict = {
         "suffix": ".ts",
         "selectors": {
             "player": ".videoPlayer",
+            # "message": ".message",
             "start": "[data-agth='playerPreplayer']",
-            # "mute": "[data-agth='playerMutedButton']",
             "fullscreen": "[data-agth='playerFullScreenOnButton']",
         },
     },
@@ -15,8 +15,8 @@ CHANNELS: dict = {
         "pattern": r"^https?://atres-live-ssai\.atresmedia\.com[^?]*-video=\d+-\d+\.ts(?:\?.*)?$",
         "suffix": ".ts",
         "selectors": {
-            "startfirst": True,
             "player": ".playerContainer",
+            "message": ".message",
             "start": "button[aria-label='Directo']",
             # "fullscreen": "[data-agth='playerFullScreenOnButton']",
         },

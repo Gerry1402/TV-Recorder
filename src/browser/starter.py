@@ -7,6 +7,7 @@ from .channels import CHANNELS
 
 class Starter:
     between_clicks = 0.2  # seconds
+    after_play = 1  # seconds
     adds = 90  # seconds
 
     def __init__(self, channel: str) -> None:
@@ -31,12 +32,13 @@ class Starter:
             with page.expect_response(lambda r: filter(r), timeout=self.adds * 1000) as _:
                 page.locator(self.selectors["start"]).click()
             self.coordinates = obtain_coordinates()
+            page.wait_for_timeout(self.after_play * 1000)
 
         def click(selector: str) -> None:
             if self.coordinates:
                 hover(*self.coordinates)
-            page.wait_for_timeout(self.between_clicks * 1000)
             page.locator(self.selectors[selector]).click()
+            page.wait_for_timeout(self.between_clicks * 1000)
 
         for elem in self.selectors:
             click(elem) if elem != "start" else start_stream(filter)
